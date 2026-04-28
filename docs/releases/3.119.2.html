@@ -91,7 +91,7 @@
 <p><strong>Security hardening release</strong> · Released February 7, 2026 · <a href="https://www.nuget.org/packages/SkiaSharp/3.119.2">NuGet</a> · <a href="https://github.com/mono/SkiaSharp/releases/tag/v3.119.2">GitHub Release</a></p>
 </blockquote>
 <h2 id="highlights">Highlights</h2>
-<p>This release focuses on hardening the native libraries against common exploit techniques on Windows and Linux. Spectre mitigations, Control Flow Guard, and BufferSecurityCheck are now enabled across all Windows and Linux native builds. Three community contributors drove every user-facing change in this release.</p>
+<p>This release focuses on hardening the native libraries against common exploit techniques on Windows and Linux. Spectre mitigations, Control Flow Guard, and BufferSecurityCheck are now enabled across all Windows and Linux native builds. Three community contributors — ❤️ <a href="https://github.com/MartinZikmund">@MartinZikmund</a>, ❤️ <a href="https://github.com/Aguilex">@Aguilex</a>, and ❤️ <a href="https://github.com/sshumakov">@sshumakov</a> — drove every user-facing change in this release.</p>
 <h2 id="breaking-changes">Breaking Changes</h2>
 <p><em>None in this release.</em></p>
 <h2 id="new-features">New Features</h2>
@@ -101,10 +101,10 @@
 </ul>
 <h2 id="security">Security</h2>
 <ul>
-<li><strong>Spectre mitigation for Windows</strong> — Enables <code>/Qspectre</code> for <code>libSkiaSharp.dll</code>. ❤️ <a href="https://github.com/sshumakov">@sshumakov</a> (<a href="https://github.com/mono/SkiaSharp/pull/3496">#3496</a>, <a href="https://github.com/mono/SkiaSharp/pull/3497">#3497</a>)</li>
-<li><strong>Spectre mitigation for Linux</strong> — Enables Spectre v1 mitigations for <code>libSkiaSharp.so</code>. ❤️ <a href="https://github.com/sshumakov">@sshumakov</a> (<a href="https://github.com/mono/SkiaSharp/pull/3502">#3502</a>, <a href="https://github.com/mono/SkiaSharp/pull/3503">#3503</a>)</li>
+<li><strong>Spectre mitigation for Windows</strong> — Enables <code>/Qspectre</code> for <code>libSkiaSharp.dll</code>. ❤️ <a href="https://github.com/sshumakov">@sshumakov</a> (<a href="https://github.com/mono/SkiaSharp/pull/3497">#3497</a>, originally <a href="https://github.com/mono/SkiaSharp/pull/3496">#3496</a>)</li>
+<li><strong>Spectre mitigation for Linux</strong> — Enables Spectre mitigation for <code>libSkiaSharp.so</code>. ❤️ <a href="https://github.com/sshumakov">@sshumakov</a> (<a href="https://github.com/mono/SkiaSharp/pull/3503">#3503</a>, originally <a href="https://github.com/mono/SkiaSharp/pull/3502">#3502</a>)</li>
 <li><strong>Control Flow Guard (CFG)</strong> — Enables CFG for all Windows native DLLs. ❤️ <a href="https://github.com/Aguilex">@Aguilex</a> (<a href="https://github.com/mono/SkiaSharp/pull/3397">#3397</a>)</li>
-<li><strong>BufferSecurityCheck</strong> — Enables <code>/GS</code> buffer security checks to resolve BinSkim BA2007. ❤️ <a href="https://github.com/Aguilex">@Aguilex</a> (<a href="https://github.com/mono/SkiaSharp/pull/3404">#3404</a>)</li>
+<li><strong>BufferSecurityCheck</strong> — Enables BufferSecurityCheck for Windows native DLLs to resolve BinSkim BA2007. ❤️ <a href="https://github.com/Aguilex">@Aguilex</a> (<a href="https://github.com/mono/SkiaSharp/pull/3404">#3404</a>)</li>
 </ul>
 <h2 id="platform-support">Platform Support</h2>
 <table>
@@ -143,12 +143,12 @@
 <td>Added missing tvOS <code>SKSurface.Create</code> overloads</td>
 </tr>
 <tr>
-<td><a href="https://github.com/sshumakov">@sshumakov</a></td>
-<td>Added Spectre mitigations for Windows and Linux</td>
-</tr>
-<tr>
 <td><a href="https://github.com/Aguilex">@Aguilex</a></td>
 <td>Enabled Control Flow Guard and BufferSecurityCheck on Windows</td>
+</tr>
+<tr>
+<td><a href="https://github.com/sshumakov">@sshumakov</a></td>
+<td>Added Spectre mitigation for Windows and Linux native libraries</td>
 </tr>
 </tbody>
 </table>
@@ -164,7 +164,7 @@
 <p><a href="https://github.com/mono/SkiaSharp/compare/v3.119.2-preview.2.3...v3.119.2-preview.3.1">Full Changelog</a></p>
 <hr>
 <h2 id="preview-2-january-26-2026">Preview 2 (January 26, 2026)</h2>
-<p>Enabled Control Flow Guard and BufferSecurityCheck for Windows native DLLs.</p>
+<p>Enabled Control Flow Guard and BufferSecurityCheck for all Windows native DLLs. Plus several CI and documentation improvements.</p>
 <p><a href="https://github.com/mono/SkiaSharp/compare/v3.119.2-preview.1.2...v3.119.2-preview.2.3">Full Changelog</a></p>
 <hr>
 <h2 id="preview-1-january-26-2026">Preview 1 (January 26, 2026)</h2>
@@ -191,7 +191,7 @@
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          main · main · 6a020ad
+          main · main · b54af5b
         </div>
       </div>
     </footer>

@@ -88,31 +88,30 @@
 <h1 id="version-31193">Version 3.119.3</h1>
 
 <blockquote>
-<p><strong>Security updates and native fixes</strong> · Preview only · <a href="https://www.nuget.org/packages/SkiaSharp/3.119.3-preview.1.1">NuGet</a> · <a href="https://github.com/mono/SkiaSharp/releases/tag/v3.119.3-preview.1.1">GitHub Release</a></p>
+<p><strong>Security &amp; stability release</strong> · Preview only · <a href="https://www.nuget.org/packages/SkiaSharp/3.119.3-preview.1.1">NuGet</a> · <a href="https://github.com/mono/SkiaSharp/releases/tag/v3.119.3-preview.1.1">GitHub Release</a></p>
 </blockquote>
 <h2 id="highlights">Highlights</h2>
-<p>SkiaSharp 3.119.3 delivers a sweep of native dependency security updates — libpng, libexpat, brotli, and libwebp are all bumped to their latest versions. Spectre mitigations are carried forward for both Windows and Linux builds. A fix for AoT crashes when <code>IlcDisableReflection=true</code> improves NativeAOT compatibility, and a Linux ARM64 fontconfig fix resolves cross-compilation crashes.</p>
+<p>This release extends Spectre mitigations to Linux native builds, updates four native dependencies to their latest versions, and fixes two crashes — an AoT failure when <code>IlcDisableReflection=true</code> and a Linux ARM64 crash caused by missing fontconfig in the cross-compile sysroot. Community contributor ❤️ <a href="https://github.com/sshumakov">@sshumakov</a> drove the Spectre hardening across both Windows and Linux.</p>
 <h2 id="breaking-changes">Breaking Changes</h2>
 <p><em>None in this release.</em></p>
-<h2 id="new-features">New Features</h2>
-<h3 id="security">Security</h3>
+<h2 id="security">Security</h2>
 <ul>
-<li><strong>Update libpng to 1.6.54</strong> — Bumps libpng for latest security and bug fixes. (<a href="https://github.com/mono/SkiaSharp/pull/3452">#3452</a>)</li>
-<li><strong>Bump libexpat from 2.6.4 to 2.7.3</strong> — Addresses known CVEs in the XML parsing library. (<a href="https://github.com/mono/SkiaSharp/pull/3458">#3458</a>)</li>
-<li><strong>Update brotli to 1.2.0</strong> — Upgrades the compression library to the latest release. (<a href="https://github.com/mono/SkiaSharp/pull/3469">#3469</a>)</li>
-<li><strong>Update libwebp to 1.6.0</strong> — Upgrades WebP encoding/decoding to the latest release. (<a href="https://github.com/mono/SkiaSharp/pull/3478">#3478</a>)</li>
-<li><strong>Spectre mitigation for Windows</strong> — Enables <code>/Qspectre</code> for <code>libSkiaSharp.dll</code>. ❤️ <a href="https://github.com/sshumakov">@sshumakov</a> (<a href="https://github.com/mono/SkiaSharp/pull/3496">#3496</a>)</li>
-<li><strong>Spectre mitigation for Linux</strong> — Enables Spectre v1 mitigations for <code>libSkiaSharp.so</code>. ❤️ <a href="https://github.com/sshumakov">@sshumakov</a> (<a href="https://github.com/mono/SkiaSharp/pull/3502">#3502</a>)</li>
-</ul>
-<h3 id="api-surface">API Surface</h3>
-<ul>
-<li><strong>Fix AoT crash when IlcDisableReflection=true</strong> — Resolves a crash in NativeAOT deployments that disable reflection. (<a href="https://github.com/mono/SkiaSharp/pull/3485">#3485</a>)</li>
+<li><strong>Spectre mitigation for Linux</strong> — Enables the Spectre mitigation compiler flag for <code>libSkiaSharp.so</code> on Linux builds. ❤️ <a href="https://github.com/sshumakov">@sshumakov</a> (<a href="https://github.com/mono/SkiaSharp/pull/3502">#3502</a>)</li>
+<li><strong>Spectre mitigation for Windows</strong> — Enables <code>/Qspectre</code> for <code>libSkiaSharp.dll</code> on Windows builds. ❤️ <a href="https://github.com/sshumakov">@sshumakov</a> (<a href="https://github.com/mono/SkiaSharp/pull/3496">#3496</a>)</li>
 </ul>
 <h2 id="bug-fixes">Bug Fixes</h2>
 <ul>
-<li><strong>Fix Linux ARM64 cross-compile crash</strong> — Adds missing fontconfig to the cross-compile sysroot, fixing crashes on Linux ARM64. (<a href="https://github.com/mono/SkiaSharp/pull/3494">#3494</a>)</li>
+<li><strong>Fixed AoT crash when <code>IlcDisableReflection=true</code></strong> — Resolved a crash that occurred in NativeAOT-compiled apps with reflection disabled. (<a href="https://github.com/mono/SkiaSharp/pull/3485">#3485</a>)</li>
+<li><strong>Fixed Linux ARM64 crash from missing fontconfig</strong> — Added fontconfig to the cross-compile sysroot so Linux ARM64 builds no longer crash at startup. (<a href="https://github.com/mono/SkiaSharp/pull/3494">#3494</a>)</li>
 </ul>
-<p>Plus several CI, documentation, and skill improvements.</p>
+<h2 id="dependencies">Dependencies</h2>
+<ul>
+<li><strong>libpng → 1.6.54</strong> — Picks up upstream bug fixes and security patches. (<a href="https://github.com/mono/SkiaSharp/pull/3452">#3452</a>)</li>
+<li><strong>libexpat → 2.7.3</strong> — Updated from 2.6.4 with multiple upstream CVE fixes. (<a href="https://github.com/mono/SkiaSharp/pull/3458">#3458</a>)</li>
+<li><strong>brotli → 1.2.0</strong> — Updated to the latest upstream release. (<a href="https://github.com/mono/SkiaSharp/pull/3469">#3469</a>)</li>
+<li><strong>libwebp → 1.6.0</strong> — Updated to the latest upstream release. (<a href="https://github.com/mono/SkiaSharp/pull/3478">#3478</a>)</li>
+<li><strong>Removed unused dependencies</strong> — Cleaned up unused native dependencies across platforms. (<a href="https://github.com/mono/SkiaSharp/pull/3463">#3463</a>)</li>
+</ul>
 <h2 id="platform-support">Platform Support</h2>
 <table>
 <thead>
@@ -128,11 +127,11 @@
 </tr>
 <tr>
 <td>🐧 Linux</td>
-<td>Spectre mitigation, ARM64 fontconfig fix</td>
+<td>Spectre mitigation, ARM64 fontconfig crash fix</td>
 </tr>
 <tr>
 <td>🎨 Core API</td>
-<td>NativeAOT IlcDisableReflection fix</td>
+<td>AoT <code>IlcDisableReflection</code> crash fix</td>
 </tr>
 <tr>
 <td>📦 General</td>
@@ -151,7 +150,7 @@
 <tbody>
 <tr>
 <td><a href="https://github.com/sshumakov">@sshumakov</a></td>
-<td>Added Spectre mitigations for Windows and Linux</td>
+<td>Added Spectre mitigations for both Windows and Linux native libraries</td>
 </tr>
 </tbody>
 </table>
@@ -159,10 +158,11 @@
 <ul>
 <li><a href="https://github.com/mono/SkiaSharp/compare/v3.119.2...v3.119.3-preview.1.1">Full Changelog</a></li>
 <li><a href="https://www.nuget.org/packages/SkiaSharp/3.119.3-preview.1.1">NuGet Package</a></li>
+<li><a href="https://github.com/mono/SkiaSharp/tree/main/changelogs/SkiaSharp/3.119.3">API Diff</a></li>
 </ul>
 <hr>
 <h2 id="preview-1-february-11-2026">Preview 1 (February 11, 2026)</h2>
-<p>Security dependency sweep (libpng, libexpat, brotli, libwebp), Spectre mitigations, NativeAOT IlcDisableReflection fix, and Linux ARM64 fontconfig crash fix.</p>
+<p>Security hardening with Spectre mitigations for Windows and Linux, four native dependency updates, and two crash fixes (AoT and Linux ARM64).</p>
 <p><a href="https://github.com/mono/SkiaSharp/compare/v3.119.2...v3.119.3-preview.1.1">Full Changelog</a></p>
 
 </article>
@@ -185,7 +185,7 @@
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          main · main · 6a020ad
+          main · main · b54af5b
         </div>
       </div>
     </footer>
