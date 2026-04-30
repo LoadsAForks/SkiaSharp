@@ -86,49 +86,58 @@
 
         <article data-uid="">
 <h1 id="version-41470">Version 4.147.0</h1>
+<!-- Generated: 2026-04-30T13:55:26Z by claude-sonnet-4.6 -->
 
 <blockquote>
-<p><strong>Major version release — Skia milestone 147, variable fonts &amp; new platform targets</strong> · Preview only · <a href="https://www.nuget.org/packages/SkiaSharp/4.147.0-preview.1.1">NuGet</a> · <a href="https://github.com/mono/SkiaSharp/releases/tag/v4.147.0-preview.1.1">GitHub Release</a></p>
+<p><strong>Major release · Skia milestone 147 · Variable &amp; color fonts · New platforms</strong> · Preview only · <a href="https://www.nuget.org/packages/SkiaSharp/4.147.0-preview.1">NuGet</a> · <a href="https://github.com/mono/SkiaSharp/releases/tag/v4.147.0-preview.1">GitHub Release</a></p>
 </blockquote>
 <h2 id="highlights">Highlights</h2>
-<p>SkiaSharp 4.147.0 is a major version leap — jumping from 3.x to 4.x — powered by a Skia engine upgrade all the way to Chrome milestone 147. The headline feature is full <strong>variable font support</strong> contributed by ❤️ <a href="https://github.com/ramezgerges">@ramezgerges</a>, enabling runtime font variation axis control, typeface cloning, and allocation-free Span APIs across both SkiaSharp and HarfBuzzSharp. New platform targets for Tizen and Android Bionic (❤️ <a href="https://github.com/4Darmygeometry">@4Darmygeometry</a>), color font palette support, and a long-standing Android rendering fix (❤️ <a href="https://github.com/SimonvBez">@SimonvBez</a>) round out the release.</p>
-<h2 id="breaking-changes">Breaking Changes</h2>
-<p><em>None in this release.</em> The major version bump from 3.x to 4.x reflects the engine leap to milestone 147; existing APIs are preserved.</p>
+<p>SkiaSharp 4.0 is a landmark release: the major version bump from 3.x to 4.x comes alongside an upgrade to <strong>Skia milestone 147</strong>, full <strong>variable font</strong> and <strong>color font palette</strong> support, new native builds for <strong>Linux Bionic</strong> and <strong>Tizen ARM64/x64</strong>, and security updates for libpng and libexpat. Much of this release was community-driven — special thanks to <a href="https://github.com/ramezgerges">@ramezgerges</a> for the Skia milestone 147 bump, variable font support, and Uno Platform WebAssembly work, and to <a href="https://github.com/4Darmygeometry">@4Darmygeometry</a> for Linux Bionic and C# 13 support across legacy target frameworks.</p>
+<h2 id="-breaking-changes">⚠️ Breaking Changes</h2>
+<ul>
+<li><strong>Major version bump: 3.x → 4.x</strong> — SkiaSharp has moved to version 4.x. Update package references and review any version-pinned dependencies. (<a href="https://github.com/mono/SkiaSharp/pull/3640">#3640</a>)</li>
+</ul>
 <h2 id="new-features">New Features</h2>
 <h3 id="engine">Engine</h3>
 <ul>
-<li><strong>Bump Skia to milestone 132</strong> — Intermediate engine upgrade from the previous baseline. ❤️ <a href="https://github.com/ramezgerges">@ramezgerges</a> (<a href="https://github.com/mono/SkiaSharp/pull/3560">#3560</a>)</li>
-<li><strong>Bump Skia to milestone 133</strong> — Continues the engine upgrade path with generation (G) improvements. (<a href="https://github.com/mono/SkiaSharp/pull/3660">#3660</a>)</li>
-<li><strong>Bump Skia to milestone 147</strong> — Lands the target milestone powering the 4.x series. ❤️ <a href="https://github.com/ramezgerges">@ramezgerges</a> (<a href="https://github.com/mono/SkiaSharp/pull/3702">#3702</a>)</li>
-<li><strong>Upgrade major version from 3.x to 4.x</strong> — Aligns the SkiaSharp version scheme with the Skia milestone and future-proofs version references. (<a href="https://github.com/mono/SkiaSharp/pull/3640">#3640</a>)</li>
+<li><strong>Skia milestone 147</strong> — Upgrades the underlying Skia engine to milestone 147, bringing the latest rendering improvements, GPU backend updates, and API additions from upstream Skia. ❤️ <a href="https://github.com/ramezgerges">@ramezgerges</a> (<a href="https://github.com/mono/SkiaSharp/pull/3702">#3702</a>)</li>
+<li><strong>Skia milestone 133</strong> — Intermediate engine update included in the 4.0 journey. (<a href="https://github.com/mono/SkiaSharp/pull/3660">#3660</a>)</li>
+<li><strong>Skia milestone 132</strong> — Foundation engine update from the community. ❤️ <a href="https://github.com/ramezgerges">@ramezgerges</a> (<a href="https://github.com/mono/SkiaSharp/pull/3560">#3560</a>)</li>
 </ul>
 <h3 id="text--fonts">Text &amp; Fonts</h3>
 <ul>
-<li><strong>Variable font support</strong> — Adds <code>SKFourByteTag</code>, <code>SKFontVariationAxis</code>, <code>SKFontArguments</code>, and new <code>SKTypeface</code> APIs (<code>VariationDesignParameters</code>, <code>VariationDesignPosition</code>, <code>Clone</code>) with full Span overloads. HarfBuzzSharp gains matching <code>Face</code> and <code>Font</code> variation APIs. 151 tests and a gallery sample included. ❤️ <a href="https://github.com/ramezgerges">@ramezgerges</a> (<a href="https://github.com/mono/SkiaSharp/pull/3703">#3703</a>)</li>
-<li><strong>Color font palette support</strong> — Adds color palette querying and selection for color fonts (e.g., COLRv1), and improves variable font robustness. (<a href="https://github.com/mono/SkiaSharp/pull/3742">#3742</a>)</li>
-<li><strong>Fix default-typeface resolution</strong> — Moves default typeface resolution to the managed layer, fixing inconsistencies across platforms. ❤️ <a href="https://github.com/ramezgerges">@ramezgerges</a> (<a href="https://github.com/mono/SkiaSharp/pull/3730">#3730</a>)</li>
+<li><strong>Variable font support</strong> — Adds full variable font support to SkiaSharp and HarfBuzzSharp, enabling per-axis font variation (weight, width, slant, and more) for rich typography. ❤️ <a href="https://github.com/ramezgerges">@ramezgerges</a> (<a href="https://github.com/mono/SkiaSharp/pull/3703">#3703</a>)</li>
+<li><strong>Color font palette support</strong> — Adds <code>SKTypeface</code> palette APIs for color font rendering, with improved robustness for variable color fonts. (<a href="https://github.com/mono/SkiaSharp/pull/3742">#3742</a>)</li>
+<li><strong>Default typeface resolution moved to managed layer</strong> — Resolves cross-platform inconsistencies in default typeface selection by moving the logic to managed code. ❤️ <a href="https://github.com/ramezgerges">@ramezgerges</a> (<a href="https://github.com/mono/SkiaSharp/pull/3730">#3730</a>)</li>
 </ul>
 <h3 id="api-surface">API Surface</h3>
 <ul>
-<li><strong>SKSamplingOptions for surface/canvas drawing</strong> — Adds <code>SKSamplingOptions</code> support to <code>SKSurface.Draw</code> and <code>SKCanvas.DrawSurface</code>, enabling control over filtering when drawing surfaces. ❤️ <a href="https://github.com/Copilot">@Copilot</a> (<a href="https://github.com/mono/SkiaSharp/pull/3491">#3491</a>)</li>
-<li><strong>PolySharp for C# 13 on legacy TFMs</strong> — Enables modern C# 13 language features (required-init, <code>ReadOnlySpan</code> patterns, etc.) on older target frameworks via PolySharp. ❤️ <a href="https://github.com/4Darmygeometry">@4Darmygeometry</a> (<a href="https://github.com/mono/SkiaSharp/pull/3642">#3642</a>)</li>
+<li><strong><code>SKSamplingOptions</code> for <code>SKSurface.Draw</code> and <code>SKCanvas.DrawSurface</code></strong> — Adds <code>SKSamplingOptions</code> overloads to <code>SKSurface.Draw</code> and <code>SKCanvas.DrawSurface</code> for fine-grained texture filtering control. ❤️ <a href="https://github.com/Copilot">@Copilot</a> (<a href="https://github.com/mono/SkiaSharp/pull/3491">#3491</a>)</li>
 </ul>
 <h3 id="platform">Platform</h3>
 <ul>
-<li><strong>Tizen x64 and arm64 native builds</strong> — Adds native build support for Tizen on both x64 and arm64 architectures. (<a href="https://github.com/mono/SkiaSharp/pull/3620">#3620</a>)</li>
-<li><strong>Android Bionic Library build support</strong> — Enables building SkiaSharp natively against Android's Bionic libc. ❤️ <a href="https://github.com/4Darmygeometry">@4Darmygeometry</a> (<a href="https://github.com/mono/SkiaSharp/pull/3217">#3217</a>)</li>
+<li><strong>Linux Bionic native assets</strong> — Adds native library support for Linux Bionic (Android-kernel Linux), enabling SkiaSharp on glibc-free Linux environments. ❤️ <a href="https://github.com/4Darmygeometry">@4Darmygeometry</a> (<a href="https://github.com/mono/SkiaSharp/pull/3217">#3217</a>)</li>
+<li><strong>Tizen x64 and ARM64 native builds</strong> — Adds full native build and CI support for Tizen on x64 and arm64 architectures. (<a href="https://github.com/mono/SkiaSharp/pull/3620">#3620</a>)</li>
+<li><strong>C# 13 support on legacy TFMs</strong> — Adds PolySharp to enable C# 13 language features across legacy target frameworks (.NET Framework, .NET Standard). ❤️ <a href="https://github.com/4Darmygeometry">@4Darmygeometry</a> (<a href="https://github.com/mono/SkiaSharp/pull/3642">#3642</a>)</li>
 </ul>
 <h2 id="security">Security</h2>
 <ul>
-<li><strong>Update libexpat to 2.7.5</strong> — Picks up upstream security and bug fixes. (<a href="https://github.com/mono/SkiaSharp/pull/3717">#3717</a>)</li>
-<li><strong>Update libpng to 1.6.58</strong> — Picks up upstream security and bug fixes. (<a href="https://github.com/mono/SkiaSharp/pull/3718">#3718</a>)</li>
+<li><strong>libpng updated to 1.6.58</strong> — Picks up upstream security fixes in libpng. (<a href="https://github.com/mono/SkiaSharp/pull/3718">#3718</a>)</li>
+<li><strong>libexpat updated to 2.7.5</strong> — Picks up upstream security fixes in libexpat. (<a href="https://github.com/mono/SkiaSharp/pull/3717">#3717</a>)</li>
 </ul>
 <h2 id="bug-fixes">Bug Fixes</h2>
 <ul>
-<li><strong>Fixed SKGLView on Android not rendering with TabBar</strong> — Resolves a long-standing issue where <code>SKGLView</code> would not render when used inside a <code>TabBar</code> layout on Android. ❤️ <a href="https://github.com/SimonvBez">@SimonvBez</a> (<a href="https://github.com/mono/SkiaSharp/pull/3076">#3076</a>)</li>
-<li><strong>Fix x86 .NET Framework threading test OOM failures</strong> — Addresses out-of-memory crashes in threading tests on 32-bit .NET Framework. (<a href="https://github.com/mono/SkiaSharp/pull/3674">#3674</a>)</li>
-<li><strong>Fix Debian 13 Docker builds</strong> — Fixes the native build for Debian 13 on non-loong64/riscv64 architectures. (<a href="https://github.com/mono/SkiaSharp/pull/3747">#3747</a>)</li>
+<li><strong>Android <code>SKGLView</code> rendering after MAUI tab switch</strong> — Fixes <code>SKGLView</code> not rendering when switching back to a tab in a MAUI <code>TabBar</code> on Android. ❤️ <a href="https://github.com/SimonvBez">@SimonvBez</a> (<a href="https://github.com/mono/SkiaSharp/pull/3076">#3076</a>)</li>
+<li><strong>x86 .NET Framework threading test OOM</strong> — Fixes intermittent out-of-memory failures in threading tests on x86 .NET Framework targets. (<a href="https://github.com/mono/SkiaSharp/pull/3674">#3674</a>)</li>
 </ul>
+<h2 id="gallery--samples">Gallery &amp; Samples</h2>
+<ul>
+<li><strong>Uno Platform WebAssembly SkiaFiddle sample</strong> — Adds the SkiaFiddle interactive code editor as a standalone Uno Platform WebAssembly sample. ❤️ <a href="https://github.com/ramezgerges">@ramezgerges</a> (<a href="https://github.com/mono/SkiaSharp/pull/3762">#3762</a>)</li>
+<li><strong>Uno Platform WebAssembly gallery</strong> — Adds the full multi-page SkiaSharp gallery as an Uno Platform WebAssembly app. ❤️ <a href="https://github.com/ramezgerges">@ramezgerges</a> (<a href="https://github.com/mono/SkiaSharp/pull/3758">#3758</a>, <a href="https://github.com/mono/SkiaSharp/pull/3666">#3666</a>)</li>
+<li><strong>FillPath and TextToPath gallery samples</strong> — New gallery demos for <code>FillPath</code> and <code>TextToPath</code> operations. (<a href="https://github.com/mono/SkiaSharp/pull/3761">#3761</a>)</li>
+<li><strong>Gallery WASM text rendering and download button</strong> — Fixes text rendering in the WebAssembly gallery and adds a sample-download button. (<a href="https://github.com/mono/SkiaSharp/pull/3760">#3760</a>)</li>
+</ul>
+<p>Plus several CI and documentation improvements.</p>
 <h2 id="platform-support">Platform Support</h2>
 <table>
 <thead>
@@ -140,31 +149,30 @@
 <tbody>
 <tr>
 <td>🎨 Core API</td>
-<td>Variable fonts, color palettes, SKSamplingOptions for surface drawing</td>
-</tr>
-<tr>
-<td>🤖 Android</td>
-<td>Bionic Library builds, SKGLView TabBar rendering fix</td>
-</tr>
-<tr>
-<td>📺 Tizen</td>
-<td>x64 and arm64 native builds</td>
-</tr>
-<tr>
-<td>🪟 Windows</td>
-<td>x86 .NET Framework threading fix</td>
+<td>Skia milestone 147, variable fonts, color font palettes, <code>SKSamplingOptions</code> overloads</td>
 </tr>
 <tr>
 <td>🐧 Linux</td>
-<td>Debian 13 Docker build fix</td>
+<td>Linux Bionic native assets</td>
+</tr>
+<tr>
+<td>🤖 Android</td>
+<td>Fix <code>SKGLView</code> rendering after MAUI tab switch</td>
 </tr>
 <tr>
 <td>🌐 WebAssembly</td>
-<td>Uno Platform gallery and SkiaFiddle samples</td>
+<td>Uno Platform gallery and SkiaFiddle sample, WASM text rendering fix</td>
+</tr>
+<tr>
+<td>🎮 Tizen</td>
+<td>x64 and ARM64 native build support</td>
+</tr>
+<tr>
+<td>📦 All</td>
+<td>C# 13 on legacy TFMs, libpng 1.6.58, libexpat 2.7.5</td>
 </tr>
 </tbody>
 </table>
-<p>Plus several CI, documentation, skill, and workflow improvements.</p>
 <h2 id="community-contributors-">Community Contributors ❤️</h2>
 <table>
 <thead>
@@ -176,32 +184,32 @@
 <tbody>
 <tr>
 <td><a href="https://github.com/ramezgerges">@ramezgerges</a></td>
-<td>Variable font support, Skia milestone bumps (132 &amp; 147), default-typeface fix, CppAst generator update, Uno Platform samples</td>
+<td>Skia milestone 147 bump, variable font support, default typeface resolution fix, Uno Platform WebAssembly gallery and SkiaFiddle sample</td>
 </tr>
 <tr>
 <td><a href="https://github.com/4Darmygeometry">@4Darmygeometry</a></td>
-<td>Android Bionic Library build support, PolySharp for C# 13 on legacy TFMs</td>
+<td>Linux Bionic native assets, C# 13 PolySharp support on legacy TFMs</td>
 </tr>
 <tr>
 <td><a href="https://github.com/SimonvBez">@SimonvBez</a></td>
-<td>Fixed SKGLView Android TabBar rendering (first contribution! 🎉)</td>
+<td>Fixed <code>SKGLView</code> rendering after MAUI tab switch on Android</td>
 </tr>
 <tr>
 <td><a href="https://github.com/Copilot">@Copilot</a></td>
-<td>Added SKSamplingOptions support to surface/canvas drawing</td>
+<td>Added <code>SKSamplingOptions</code> overloads for <code>SKSurface.Draw</code> and <code>SKCanvas.DrawSurface</code></td>
 </tr>
 </tbody>
 </table>
 <h2 id="links">Links</h2>
 <ul>
-<li><a href="https://github.com/mono/SkiaSharp/compare/v3.119.4-preview.1.1...v4.147.0-preview.1.1">Full Changelog</a></li>
-<li><a href="https://www.nuget.org/packages/SkiaSharp/4.147.0-preview.1.1">NuGet Package</a></li>
+<li><a href="https://github.com/mono/SkiaSharp/compare/v3.119.4-preview.1...v4.147.0-preview.1">Full Changelog</a></li>
+<li><a href="https://www.nuget.org/packages/SkiaSharp/4.147.0-preview.1">NuGet Package</a></li>
 <li><a href="https://github.com/mono/SkiaSharp/tree/main/changelogs/SkiaSharp/4.147.0">API Diff</a></li>
 </ul>
 <hr>
-<h2 id="preview-1-april-28-2026">Preview 1 (April 28, 2026)</h2>
-<p>Initial preview of the 4.x series — Skia engine leaps to milestone 147, variable font support, color font palettes, new Tizen and Android Bionic platform targets, and SKSamplingOptions for surface drawing.</p>
-<p><a href="https://github.com/mono/SkiaSharp/compare/v3.119.4-preview.1.1...v4.147.0-preview.1.1">Full Changelog</a></p>
+<h2 id="preview-1-april-2026">Preview 1 (April 2026)</h2>
+<p>Initial preview of SkiaSharp 4.0: Skia milestone 147, variable and color font support, Linux Bionic and Tizen platform additions, security dependency updates, and a new Uno Platform WebAssembly gallery.</p>
+<p><a href="https://github.com/mono/SkiaSharp/compare/v3.119.4-preview.1...v4.147.0-preview.1">Full Changelog</a></p>
 
 </article>
 
@@ -223,7 +231,7 @@
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          main · main · 60294b0
+          main · main · 9981d30
         </div>
       </div>
     </footer>

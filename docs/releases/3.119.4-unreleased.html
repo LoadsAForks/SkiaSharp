@@ -86,22 +86,38 @@
 
         <article data-uid="">
 <h1 id="version-31194">Version 3.119.4</h1>
+<!-- Generated: 2026-04-30T13:51:25Z by claude-sonnet-4-5 -->
 
 <blockquote>
 <p><strong>Upcoming release</strong> · In development · Not yet available on NuGet</p>
 </blockquote>
 <h2 id="highlights">Highlights</h2>
-<p>This update bumps libpng to 1.6.58 and fixes a component governance metadata mismatch that was preventing accurate CVE detection for the release branch.</p>
+<p>This release updates libpng to version 1.6.58 and includes CI reliability improvements
+for Android and Linux build agents.</p>
 <h2 id="breaking-changes">Breaking Changes</h2>
 <p><em>None in this release.</em></p>
-<h2 id="security">Security</h2>
+<h2 id="new-features">New Features</h2>
+<h3 id="security">Security</h3>
 <ul>
-<li><strong>Update libpng to 1.6.58</strong> — Bumps the bundled libpng from 1.6.54 to 1.6.58, picking up upstream bug fixes and hardening. (<a href="https://github.com/mono/SkiaSharp/pull/3723">#3723</a>)</li>
-<li><strong>Fix cgmanifest.json Skia milestone mismatch</strong> — Corrected the declared Skia version from chrome/m132 to chrome/m119 so Component Governance accurately tracks CVEs for this release branch. (<a href="https://github.com/mono/SkiaSharp/pull/3721">#3721</a>)</li>
+<li><strong>libpng updated to 1.6.58</strong> — Bumps the bundled libpng native dependency to the latest
+release, picking up upstream bug fixes and security improvements. (<a href="https://github.com/mono/SkiaSharp/pull/3723">#3723</a>)</li>
 </ul>
-<hr>
-<h2 id="preview-1">Preview 1</h2>
-<p>See <a href="3.119.4.html">Version 3.119.4 — Preview 1</a> for the full list of changes included in the first preview.</p>
+<h2 id="platform-support">Platform Support</h2>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>What's New</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>📦 General</td>
+<td>libpng 1.6.58</td>
+</tr>
+</tbody>
+</table>
+<p>Plus several CI improvements for Android emulator startup and Linux hosted agent disk space.</p>
 
 </article>
 
@@ -123,7 +139,7 @@
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          main · main · 60294b0
+          main · main · 9981d30
         </div>
       </div>
     </footer>
